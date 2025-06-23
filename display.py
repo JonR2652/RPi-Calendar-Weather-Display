@@ -56,7 +56,7 @@ def drawFullScreen():
     epd.init()
     rotatedImage = image.rotate(180)
     epd.display(epd.getbuffer(rotatedImage))
-    epd.sleep(3600)
+    
 
     return rotatedImage
 
@@ -90,8 +90,9 @@ if __name__ == "__main__":
         if (now - lastFullRefresh).total_seconds() >= 3600:
             baseImage = drawFullScreen()
             lastFullRefresh = now
-            epd.sleep(3600)
+
         updateTime(baseImage)
 
-        nextMinute = (now + timedelta(minutes=1)).replace(second=0, microsecond=0)
+        # Sleep until the start of the next minute
+        nextMinute = (datetime.now() + timedelta(minutes=1)).replace(second=0, microsecond=0)
         time.sleep((nextMinute - datetime.now()).total_seconds())
