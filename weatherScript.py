@@ -9,7 +9,7 @@ load_dotenv()
 #accesses weather apin key from the .env. 
 #declares city and units to use, rather than hardcoding
 API_KEY = os.getenv("WEATHER_API_KEY")
-print("loaded key "+ API_KEY)
+
 CITY = "BELFAST"
 UNITS = "metric"
 

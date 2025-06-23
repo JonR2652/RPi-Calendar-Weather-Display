@@ -20,6 +20,7 @@ width, height = epd.height, epd.width
 
 # === Full Screen Drawing Function ===
 def drawFullScreen():
+    print(f"[{datetime.now()}] drawFullScreen() called")
     image = Image.new('1', (width, height), 255)
     draw = ImageDraw.Draw(image)
 
@@ -90,9 +91,13 @@ if __name__ == "__main__":
         if (now - lastFullRefresh).total_seconds() >= 3600:
             baseImage = drawFullScreen()
             lastFullRefresh = now
+        else:
+            updateTime(baseImage)
 
-        updateTime(baseImage)
+        # Sleep until the start of the next full minute
+        now = datetime.now()  # Refresh current time to avoid drift
+        nextMinute = (now + timedelta(minutes=1)).replace(second=0, microsecond=0)
+        sleepSeconds = (nextMinute - now).total_seconds()
 
-        # Sleep until the start of the next minute
-        nextMinute = (datetime.now() + timedelta(minutes=1)).replace(second=0, microsecond=0)
-        time.sleep((nextMinute - datetime.now()).total_seconds())
+        if sleepSeconds > 0:
+            time.sleep(sleepSeconds)
