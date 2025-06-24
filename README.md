@@ -25,13 +25,20 @@ WEATHER_API_KEY=your_weather_api_key
 -Raspberry Pi Zero 2w
 -Waveshare 2.13" v4 e-Paper display
 Libraries;
+
   -Python3
   -PIP
+  
   -requests
+  
   -Pillow
+  
   -waveshare_epd
+  
   -dotenv
+
   -gpiozero OR RPi.GPIO (dependant on driver config)
+  
   -Enabling SPI in raspiconfig
 
   It is recommended to use a virtual environment for these to avoid conflictions with other projects. There is a script named setup.sh to help to install these! 
