@@ -6,7 +6,9 @@ As a note, to change the location of the weather display, change the "longitude"
 This project also requires the use of a ".env" file, containing the API keys;
 
 NOTION_TOKEN=your_secret_notion_token
+
 NOTION_DATABASE_ID=your_calendar_database_id
+
 WEATHER_API_KEY=your_weather_api_key
 
 
